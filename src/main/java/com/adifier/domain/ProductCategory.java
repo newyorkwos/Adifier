@@ -15,7 +15,7 @@ public class ProductCategory {
     //
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private String categoryId;
+    private Long categoryId;
     //分類名稱
     @Column(nullable =false, length=10)
     private String categoryName;
@@ -37,11 +37,11 @@ public class ProductCategory {
     public ProductCategory() {
     }
 
-    public String getCategoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
 

@@ -48,7 +48,7 @@ public class ProductInfo {
     private int publishStatus;
     //審核狀態 0未審核 1已審核
     @Column(nullable =false,length=1)
-    private int audit_status;
+    private int auditStatus;
     //商品重量
     private Float weight;
     //商品長度
@@ -164,11 +164,11 @@ public class ProductInfo {
     }
 
     public int getAudit_status() {
-        return audit_status;
+        return auditStatus;
     }
 
     public void setAudit_status(int audit_status) {
-        this.audit_status = audit_status;
+        this.auditStatus = audit_status;
     }
 
     public Float getWeight() {
