@@ -75,7 +75,7 @@ public class AdifierController {
     @GetMapping("/productInfos")
     public Object getAll(@RequestParam("page") int page, @RequestParam(value = "size", defaultValue = "10") int size){
         Map<String, Object> map=new HashMap<>();
-
+        System.out.println("hi");
         return map;
     }
 }
