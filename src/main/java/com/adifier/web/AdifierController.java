@@ -1,5 +1,8 @@
 package com.adifier.web;
 
+import com.adifier.domain.ProductInfo;
+import com.adifier.service.ProductInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -16,6 +19,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1")
 public class AdifierController {
+
+    @Autowired
+    private ProductInfoService productInfoService;
 
     @RequestMapping("/say")
     public String hello(){
@@ -42,20 +48,22 @@ public class AdifierController {
         return productInfo;
     }
 
-    @PostMapping("/productInfo")
-    public Object post(@RequestParam String productCore,
-                       @RequestParam String productName,
-                       @RequestParam String barCode,
-                       @RequestParam Long brandId,
-                       @RequestParam int oneCategoryId,
-                       @RequestParam int twoCategoryId,
-                       @RequestParam int threeCategoryId,
-                       @RequestParam int supplierId,
-                       @RequestParam Long averageCost,
-                       @RequestParam int publishStatus,
-                       @RequestParam int auditStatus,
-                       @RequestParam String description) {
-        Map<String, Object> productInfo=new HashMap<>();
+    @PostMapping("/productInfos")
+    public ProductInfo post(@RequestParam String productCore,
+                            @RequestParam String productName,
+                            @RequestParam String barCode,
+                            @RequestParam Long brandId,
+                            @RequestParam int oneCategoryId,
+                            @RequestParam int twoCategoryId,
+                            @RequestParam int threeCategoryId,
+                            @RequestParam int supplierId,
+                            @RequestParam Long averageCost,
+                            @RequestParam int publishStatus,
+                            @RequestParam int auditStatus,
+                            @RequestParam String description) {
+        ProductInfo productInfo=new ProductInfo();
+        productInfo.setProductCore(productCore);
+        productInfo.setProductName(productName);
         productInfo.put("productCore",productCore);
         productInfo.put("productName",productName);
         productInfo.put("barCode",barCode);
@@ -69,14 +77,15 @@ public class AdifierController {
         productInfo.put("auditStatus",auditStatus);
         productInfo.put("description",description);
         productInfo.put("indate",new Date());
-        return productInfo;
+        return productInfoService.save(productInfo);
     }
 
     @GetMapping("/productInfos")
     public Object getAll(@RequestParam("page") int page, @RequestParam(value = "size", defaultValue = "10") int size){
-        Map<String, Object> map=new HashMap<>();
-        System.out.println("hi");
-        return map;
+
+        return productInfoService.findAll();
     }
+
+
 }
 
