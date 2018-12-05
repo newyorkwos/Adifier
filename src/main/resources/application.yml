@@ -5,7 +5,7 @@ spring:
     restart:
       trigger-file: .trigger
   datasource:
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://127.0.0.1:3306/wuschema?useUnicode=true&characterEncoding=utf-8
       username: wumy
       password: pass1234

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -48,8 +49,24 @@ public class AdifierController {
         return productInfo;
     }
 
+    /**
+     * set ProductInfo jpa save method
+     * @param productCore
+     * @param productName
+     * @param barCode
+     * @param brandId
+     * @param oneCategoryId
+     * @param twoCategoryId
+     * @param threeCategoryId
+     * @param supplierId
+     * @param averageCost
+     * @param publishStatus
+     * @param auditStatus
+     * @param description
+     * @return
+     */
     @PostMapping("/productInfos")
-    public ProductInfo post(@RequestParam String productCore,
+    public ProductInfo post(@RequestParam String productCode,
                             @RequestParam String productName,
                             @RequestParam String barCode,
                             @RequestParam Long brandId,
@@ -62,26 +79,28 @@ public class AdifierController {
                             @RequestParam int auditStatus,
                             @RequestParam String description) {
         ProductInfo productInfo=new ProductInfo();
-        productInfo.setProductCore(productCore);
+        productInfo.setProductCode(productCode);
         productInfo.setProductName(productName);
-        productInfo.put("productCore",productCore);
-        productInfo.put("productName",productName);
-        productInfo.put("barCode",barCode);
-        productInfo.put("brandId",brandId);
-        productInfo.put("oneCategoryId",oneCategoryId);
-        productInfo.put("twoCategoryId",twoCategoryId);
-        productInfo.put("threeCategoryId",threeCategoryId);
-        productInfo.put("supplierId",supplierId);
-        productInfo.put("averageCost",averageCost);
-        productInfo.put("publishStatus",publishStatus);
-        productInfo.put("auditStatus",auditStatus);
-        productInfo.put("description",description);
-        productInfo.put("indate",new Date());
+        productInfo.setBarCode(barCode);
+        productInfo.setBrandId(brandId);
+        productInfo.setOneCategoryId(oneCategoryId);
+        productInfo.setTwoCategoryId(twoCategoryId);
+        productInfo.setThreeCategoryId(threeCategoryId);
+        productInfo.setSupplierId(supplierId);
+        productInfo.setAverageCost(averageCost);
+        productInfo.setPublishStatus(publishStatus);
+        productInfo.setAuditStatus(auditStatus);
+        productInfo.setDescription(description);
+        productInfo.setIndate(new Date());
         return productInfoService.save(productInfo);
     }
 
+    /**
+     * find ProductInfo all data list
+     * @return
+     */
     @GetMapping("/productInfos")
-    public Object getAll(@RequestParam("page") int page, @RequestParam(value = "size", defaultValue = "10") int size){
+    public List<ProductInfo> getAll(){
 
         return productInfoService.findAll();
     }

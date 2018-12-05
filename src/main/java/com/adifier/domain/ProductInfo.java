@@ -18,7 +18,7 @@ public class ProductInfo {
     private Long productId;
     //商品编码
     @Column(nullable =false, length=16)
-    private String productCore;
+    private String productCode;
     //商品名稱
     @Column(nullable =false, length=20)
     private String productName;
@@ -83,12 +83,12 @@ public class ProductInfo {
         this.productId = productId;
     }
 
-    public String getProductCore() {
-        return productCore;
+    public String getProductCode() {
+        return productCode;
     }
 
-    public void setProductCore(String productCore) {
-        this.productCore = productCore;
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
     }
 
     public String getProductName() {
@@ -163,12 +163,12 @@ public class ProductInfo {
         this.publishStatus = publishStatus;
     }
 
-    public int getAudit_status() {
+    public int getAuditStatus() {
         return auditStatus;
     }
 
-    public void setAudit_status(int audit_status) {
-        this.auditStatus = audit_status;
+    public void setAuditStatus(int audit_status) {
+        this.auditStatus = auditStatus;
     }
 
     public Float getWeight() {
