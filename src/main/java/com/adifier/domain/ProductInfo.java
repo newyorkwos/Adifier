@@ -1,5 +1,7 @@
 package com.adifier.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,6 +13,7 @@ import java.util.Date;
  * @create 2018-12-02-21:25
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProductInfo {
     //商品ID
     @Id

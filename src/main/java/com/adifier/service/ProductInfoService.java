@@ -36,4 +36,13 @@ public class ProductInfoService {
     public ProductInfo save(ProductInfo productInfo){
         return productInfoRepository.save(productInfo);
     }
+
+    /**
+     * get one ProductInfo datum
+     * @param productId
+     * @return
+     */
+    public ProductInfo getOne(long productId){
+        return productInfoRepository.getOne(productId);
+    }
 }

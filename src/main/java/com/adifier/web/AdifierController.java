@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 描述:
@@ -29,29 +27,20 @@ public class AdifierController {
         return "Hello Adifier!";
     }
 
+    /**
+     * find ProductInfo by  id
+     * @param productId
+     * @return
+     */
+    @GetMapping("/productInfo/{productId}")
+    public ProductInfo getOne(@PathVariable long productId){
 
-    @GetMapping("/productInfo/{id}/productName/{productName:[a-z_]+}")
-    public Object getOne(@PathVariable long id, @PathVariable String productName){
-        Map<String, Object> productInfo=new HashMap<>();
-        productInfo.put("productCore","1234567890123456");
-        productInfo.put("productName",productName);
-        productInfo.put("barCode","0987654321");
-        productInfo.put("brandId",01);
-        productInfo.put("oneCategoryId",1);
-        productInfo.put("twoCategoryId",2);
-        productInfo.put("threeCategoryId",3);
-        productInfo.put("supplierId",1);
-        productInfo.put("averageCost",20L);
-        productInfo.put("publishStatus",0);
-        productInfo.put("auditStatus",0);
-        productInfo.put("description","New Test product");
-        productInfo.put("indate",new Date());
-        return productInfo;
+        return productInfoService.getOne(productId);
     }
 
     /**
      * set ProductInfo jpa save method
-     * @param productCore
+     * @param productCode
      * @param productName
      * @param barCode
      * @param brandId
@@ -104,6 +93,7 @@ public class AdifierController {
 
         return productInfoService.findAll();
     }
+
 
 
 }
