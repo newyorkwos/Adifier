@@ -29,7 +29,7 @@ public class ProductInfoService {
     }
 
     /**
-     * add new a productInfo data
+     * add or update  a productInfo datum
      * @param productInfo
      * @return
      */
@@ -44,5 +44,13 @@ public class ProductInfoService {
      */
     public ProductInfo getOne(long productId){
         return productInfoRepository.getOne(productId);
+    }
+
+    /**
+     * delete productInfno by productId
+     * @param productId
+     */
+    public void deleteById(long productId){
+        productInfoRepository.deleteById(productId);
     }
 }

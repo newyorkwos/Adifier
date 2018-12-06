@@ -40,34 +40,39 @@ public class AdifierController {
 
     /**
      * set ProductInfo jpa save method
-     * @param productCode
-     * @param productName
-     * @param barCode
-     * @param brandId
-     * @param oneCategoryId
-     * @param twoCategoryId
-     * @param threeCategoryId
-     * @param supplierId
-     * @param averageCost
-     * @param publishStatus
-     * @param auditStatus
-     * @param description
      * @return
      */
     @PostMapping("/productInfos")
-    public ProductInfo post(@RequestParam String productCode,
-                            @RequestParam String productName,
-                            @RequestParam String barCode,
-                            @RequestParam Long brandId,
-                            @RequestParam int oneCategoryId,
-                            @RequestParam int twoCategoryId,
-                            @RequestParam int threeCategoryId,
-                            @RequestParam int supplierId,
-                            @RequestParam Long averageCost,
-                            @RequestParam int publishStatus,
-                            @RequestParam int auditStatus,
-                            @RequestParam String description) {
+    public ProductInfo post(ProductInfo productInfo) {
+
+        return productInfoService.save(productInfo);
+    }
+
+    /**
+     * find ProductInfo all data list
+     * @return
+     */
+    @GetMapping("/productInfos")
+    public List<ProductInfo> getAll(){
+
+        return productInfoService.findAll();
+    }
+    @PutMapping("/productInfos")
+    public ProductInfo update(@RequestParam long productId,
+                              @RequestParam String productCode,
+                              @RequestParam String productName,
+                              @RequestParam String barCode,
+                              @RequestParam Long brandId,
+                              @RequestParam int oneCategoryId,
+                              @RequestParam int twoCategoryId,
+                              @RequestParam int threeCategoryId,
+                              @RequestParam int supplierId,
+                              @RequestParam Long averageCost,
+                              @RequestParam int publishStatus,
+                              @RequestParam int auditStatus,
+                              @RequestParam String description){
         ProductInfo productInfo=new ProductInfo();
+        productInfo.setProductId(productId);
         productInfo.setProductCode(productCode);
         productInfo.setProductName(productName);
         productInfo.setBarCode(barCode);
@@ -81,20 +86,19 @@ public class AdifierController {
         productInfo.setAuditStatus(auditStatus);
         productInfo.setDescription(description);
         productInfo.setIndate(new Date());
+
         return productInfoService.save(productInfo);
     }
 
     /**
-     * find ProductInfo all data list
-     * @return
+     * delete ProductInfo by Id
+     * @param productId
      */
-    @GetMapping("/productInfos")
-    public List<ProductInfo> getAll(){
+    @DeleteMapping("/productInfo/{productId}")
+    public void deleteById(@PathVariable long productId){
 
-        return productInfoService.findAll();
+         productInfoService.deleteById(productId);
     }
-
-
 
 }
 
