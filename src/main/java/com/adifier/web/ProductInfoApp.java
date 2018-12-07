@@ -17,7 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/v1")
-public class AdifierController {
+public class ProductInfoApp {
 
     @Autowired
     private ProductInfoService productInfoService;
