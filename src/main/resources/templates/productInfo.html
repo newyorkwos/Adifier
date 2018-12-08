@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ProductInfo商品詳細資訊</title>
+</head>
+<body th:object="${productInfo}">
+    <h1>ProductInfo Detail</h1>
+    <div>
+        <p>
+            <strong>商品名稱</strong><span th:text="*{productName}">商品名稱</span>
+        </p>
+        <p>
+            <strong>商品編碼</strong><span th:text="*{productCode}">商品編碼</span>
+        </p>
+        <p>
+            <strong>條碼</strong><span th:text="*{barCode}">條碼</span>
+        </p>
+        <p>
+            <strong>品牌ID</strong><span th:text="*{brandId}">品牌ID</span>
+        </p>
+        <p>
+            <strong>一級分類ID</strong><span th:text="*{oneCategoryId}">一級分類ID</span>
+        </p>
+        <p>
+            <strong>二級分類ID</strong><span th:text="*{twoCategoryId}">二級分類ID</span>
+        </p>
+        <p>
+            <strong>三級分類ID</strong><span th:text="*{threeCategoryId}">三級分類ID</span>
+        </p>
+        <p>
+            <strong>供應商ID</strong><span th:text="*{supplierId}">供應商ID</span>
+        </p>
+        <p>
+            <strong>商品平均加權成本</strong><span th:text="*{averageCost}">商品平均加權成本</span>
+        </p>
+        <p>
+            <strong>上架狀態</strong><span th:text="*{publishStatus}">上架狀態</span>
+        </p>
+        <p>
+            <strong>審核狀態</strong><span th:text="*{auditStatus}">審核狀態</span>
+        </p>
+        <p>
+            <strong>商品重量</strong><span th:text="*{weight}">商品重量</span>
+        </p>
+        <p>
+            <strong>商品長度</strong><span th:text="*{length}">商品長度</span>
+        </p>
+        <p>
+            <strong>商品寬度</strong><span th:text="*{width}">商品寬度</span>
+        </p>
+        <p>
+            <strong>商品高度</strong><span th:text="*{height}">商品高度</span>
+        </p>
+        <p>
+            <strong>顏色</strong><span th:text="*{colorType}">顏色</span>
+        </p>
+        <p>
+            <strong>生產日期</strong><span th:text="*{productionDate}">生產日期</span>
+        </p>
+        <p>
+            <strong>商品有效期限</strong ><span th:text="*{shelfLife}">商品有效期限</span>
+        </p>
+        <p>
+            <strong>商品描述</strong><span th:text="*{description}">商品描述</span>
+        </p>
+        <p>
+            <strong>商品登錄時間</strong><span th:text="*{indate}">商品登錄時間</span>
+        </p>
+        <p>
+            <strong>最後修改時間</strong><span th:text="*{modifiedTime}">最後修改時間</span>
+        </p>
+
+    </div>
+</body>
+</html>

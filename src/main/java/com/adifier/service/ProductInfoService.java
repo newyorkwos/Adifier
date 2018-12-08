@@ -43,7 +43,7 @@ public class ProductInfoService {
      * @return
      */
     public ProductInfo getOne(long productId){
-        return productInfoRepository.getOne(productId);
+        return productInfoRepository.findById(productId).orElse(null);
     }
 
     /**
