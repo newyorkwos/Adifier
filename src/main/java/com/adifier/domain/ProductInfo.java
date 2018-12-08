@@ -19,7 +19,7 @@ public class ProductInfo {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long productId;
-    //商品编码
+    //商品編碼
     @Column(nullable =false, length=16)
     private String productCode;
     //商品名稱
