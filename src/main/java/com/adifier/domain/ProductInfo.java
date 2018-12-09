@@ -19,59 +19,80 @@ public class ProductInfo {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long productId;
+
     //商品編碼
     @Column(nullable =false, length=16)
     private String productCode;
+
     //商品名稱
     @Column(nullable =false, length=20)
     private String productName;
-    //國條碼
+
+    //條碼
     @Column(nullable =false, length=50)
     private String barCode ;
+
     //品牌ID
     @Column(nullable =false)
     private Long brandId;
+
     //一級分類ID
     @Column(nullable =false)
     private int oneCategoryId ;
+
     //二級分類ID
     @Column(nullable =false)
     private int twoCategoryId;
+
     //三級分類ID
     @Column(nullable =false)
     private int threeCategoryId;
+
     //供應商ID*******
     @Column(nullable =false)
     private int supplierId;
+
     //商品平均加權成本
     @Column(nullable =false)
     private Long averageCost;
+
     //上架狀態：0下架 1上架
     @Column(nullable =false,length=1)
     private int publishStatus;
+
     //審核狀態 0未審核 1已審核
     @Column(nullable =false,length=1)
     private int auditStatus;
+
     //商品重量
     private Float weight;
+
     //商品長度
     private Float length;
+
     //商品高度
     private Float height;
+
     //商品寬度
     private Float width;
+
     //顏色
     private String colorType;
+
     //生產日期
     private Date productionDate;
+
     //商品有效期限
     private Date shelfLife;
+
     //商品描述
     @Column(nullable =false)
     private String description;
+
     //商品登錄時間
     @Column(nullable =false,length=1)
     private Date indate;
+
     //最後修改時間
     private Date modifiedTime;
 
