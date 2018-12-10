@@ -48,4 +48,13 @@ public class ProductInfoController {
         model.addAttribute("productInfo",productInfo);
         return "productInfo";
     }
+
+    /**
+     * direct to input.html
+     * @return
+     */
+    @GetMapping("/productInfo/input")
+    public String inputPage(){
+        return "input";
+    }
 }

@@ -5,107 +5,108 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css">
-    <title>ProductInfo Input</title>
+    <title>ProductInfo 新增</title>
 </head>
-<body th:object="${productInfo}">
+<body >
 <div class="container" style="max-width: 800px;">
     <div class="well">
-        <form action="#" th:action="@{/books}" th:object="${book}" method="post">
-            <input type="hidden" th:value="*{id}" name="id">
+        <form action="#"  method="post">
+
             <div class="form-group">
                 <lable for="productNameId">商品名稱</lable>
-                <input type="text" name="productName" id="productNameId" th:field="*{productName}" class="form-control">
+                <input type="text" name="productName" id="productNameId"  class="form-control">
             </div>
             <div class="form-group">
                 <lable for="productCodeId">商品編碼</lable>
-                <input type="text" name="productCode" id="productCodeId" th:field="*{productCode}" class="form-control">
+                <input type="text" name="productCode" id="productCodeId" class="form-control">
             </div>
             <div class="form-group">
                 <lable for="barCodeId">條碼</lable>
-                <input type="text" name="barCode" id="barCodeId" th:field="*{barCode}" class="form-control">
+                <input type="text" name="barCode" id="barCodeId"  class="form-control">
             </div>
             <div class="form-group">
                 <lable for="brandId">品牌ID</lable>
-                <input type="text" name="brandId" id="brandId" th:field="*{brandId}" class="form-control">
+                <input type="text" name="brandId" id="brandId" class="form-control">
             </div>
             <div class="form-group">
                 <lable for="oneCategoryId">一級分類ID</lable>
-                <input type="text" name="oneCategoryId" id="oneCategoryId" th:field="*{oneCategoryId}" class="form-control">
+                <input type="text" name="oneCategoryId" id="oneCategoryId" class="form-control">
             </div>
             <div class="form-group">
                 <lable for="twoCategoryId">二級分類ID</lable>
-                <input type="text" name="twoCategoryId" id="twoCategoryId" th:field="*{twoCategoryId}" class="form-control">
+                <input type="text" name="twoCategoryId" id="twoCategoryId"  class="form-control">
             </div>
             <div class="form-group">
                 <lable for="threeCategoryId">三級分類ID</lable>
-                <input type="text" name="threeCategoryId" id="threeCategoryId" th:field="*{threeCategoryId}" class="form-control">
+                <input type="text" name="threeCategoryId" id="threeCategoryId"  class="form-control">
             </div>
             <div class="form-group">
                 <lable for="supplierId">供應商ID</lable>
-                <input type="text" name="supplierId" id="supplierId" th:field="*{supplierId}" class="form-control">
+                <input type="text" name="supplierId" id="supplierId"  class="form-control">
             </div>
             <div class="form-group">
                 <lable for="averageCostId">商品平均加權成本</lable>
-                <input type="text" name="averageCost" id="averageCostId" th:field="*{averageCost}" class="form-control">
+                <input type="text" name="averageCost" id="averageCostId"  class="form-control">
             </div>
             <div class="form-group">
                 <lable for="publishStatusId">上架狀態</lable>
-                <input type="text" name="publishStatus" id="publishStatusId" th:field="*{publishStatus}" class="form-control">
+                <select name="publishStatus" id="publishStatusId" class="form-control">
+                    <option value="0" th:selected="(*{publishStatus}== '0')">未上架</option>
+                    <option value="1" th:selected="(*{publishStatus}== '1')">已上架</option>
+                    <option value="1" th:selected="(*{publishStatus}== '2')">已下架</option>
+                </select>
             </div>
             <div class="form-group">
                 <lable for="auditStatusId">審核狀態</lable>
-                <input type="text" name="auditStatus" id="auditStatusId" th:field="*{auditStatus}" class="form-control">
+                <select name="auditStatus" id="auditStatusId" class="form-control">
+                    <option value="0" th:selected="(*{auditStatus}== '0')">未審核</option>
+                    <option value="1" th:selected="(*{auditStatus}== '1')">審核通過</option>
+                    <option value="1" th:selected="(*{auditStatus}== '2')">審核不通過</option>
+                </select>
             </div>
             <div class="form-group">
                 <lable for="weightId">商品重量</lable>
-                <input type="text" name="weight" id="weightId" th:field="*{weight}" class="form-control">
+                <input type="text" name="weight" id="weightId"  class="form-control">
             </div>
             <div class="form-group">
                 <lable for="lengthId">商品長度</lable>
-                <input type="text" name="length" id="lengthId" th:field="*{length}" class="form-control">
+                <input type="text" name="length" id="lengthId" class="form-control">
             </div>
             <div class="form-group">
                 <lable for="heightId">商品高度</lable>
-                <input type="text" name="height" id="heightId" th:field="*{height}" class="form-control">
+                <input type="text" name="height" id="heightId" class="form-control">
             </div>
             <div class="form-group">
                 <lable for="widthId">商品寬度</lable>
-                <input type="text" name="width" id="widthId" th:field="*{width}" class="form-control">
+                <input type="text" name="width" id="widthId"  class="form-control">
             </div>
             <div class="form-group">
                 <lable for="colorTypeId">顏色</lable>
-                <input type="text" name="colorType" id="colorTypeId" th:field="*{colorType}" class="form-control">
+                <input type="text" name="colorType" id="colorTypeId" class="form-control">
             </div>
             <div class="form-group">
                 <lable for="productionDateId">生產日期</lable>
-                <input type="text" name="productionDate" id="productionDateId" th:field="*{productionDate}" class="form-control">
+                <input type="text" name="productionDate" id="productionDateId" class="form-control">
             </div>
             <div class="form-group">
                 <lable for="shelfLifeId">商品有效期限</lable>
-                <input type="text" name="shelfLife" id="shelfLifeId" th:field="*{shelfLife}" class="form-control">
+                <input type="text" name="shelfLife" id="shelfLifeId"  class="form-control">
             </div>
             <div class="form-group">
                 <lable for="descriptionId">商品描述</lable>
-                <input type="text" name="description" id="descriptionId" th:field="*{description}" class="form-control">
+                <input type="text" name="description" id="descriptionId" class="form-control">
             </div>
             <div class="form-group">
                 <lable for="indateId">商品登錄時間</lable>
-                <input type="text" name="indate" id="indateId" th:field="*{indate}" class="form-control">
+                <input type="text" name="indate" id="indateId"  class="form-control">
             </div>
             <div class="form-group">
                 <lable for="modifiedTimeId">最後修改時間</lable>
-                <input type="text" name="modifiedTime" id="modifiedTimeId" th:field="*{modifiedTime}" class="form-control">
+                <input type="text" name="modifiedTime" id="modifiedTimeId"  class="form-control">
             </div>
-            <div class="form-group">
-                <lable for="statusId">作者</lable>
-                <select name="status" id="statusId" class="form-control">
-                    <option value="0" th:selected="(*{status}== '0')">想讀</option>
-                    <option value="1" th:selected="(*{status}== '1')">在讀</option>
-                    <option value="2" th:selected="(*{status}== '2')">已讀</option>
-                </select>
-            </div>
+
             <p class="text-center">
-                <button type="button" class="btn btn-default" onclick="history.go(-1)">返回</button>
+
                 <button type="submit" class="btn btn-primary">提交</button>
             </p>
         </form>
