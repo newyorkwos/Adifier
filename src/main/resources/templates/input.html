@@ -13,16 +13,88 @@
         <form action="#" th:action="@{/books}" th:object="${book}" method="post">
             <input type="hidden" th:value="*{id}" name="id">
             <div class="form-group">
-                <lable for="nameId">書名</lable>
-                <input type="text" name="name" id="nameId" th:field="*{name}" class="form-control">
+                <lable for="productNameId">商品名稱</lable>
+                <input type="text" name="productName" id="productNameId" th:field="*{productName}" class="form-control">
             </div>
             <div class="form-group">
-                <lable for="authorId">作者</lable>
-                <input type="text" name="author" id="authorId" th:field="*{author}" class="form-control">
+                <lable for="productCodeId">商品編碼</lable>
+                <input type="text" name="productCode" id="productCodeId" th:field="*{productCode}" class="form-control">
             </div>
             <div class="form-group">
-                <lable for="descriptionId">說明</lable>
+                <lable for="barCodeId">條碼</lable>
+                <input type="text" name="barCode" id="barCodeId" th:field="*{barCode}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="brandId">品牌ID</lable>
+                <input type="text" name="brandId" id="brandId" th:field="*{brandId}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="oneCategoryId">一級分類ID</lable>
+                <input type="text" name="oneCategoryId" id="oneCategoryId" th:field="*{oneCategoryId}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="twoCategoryId">二級分類ID</lable>
+                <input type="text" name="twoCategoryId" id="twoCategoryId" th:field="*{twoCategoryId}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="threeCategoryId">三級分類ID</lable>
+                <input type="text" name="threeCategoryId" id="threeCategoryId" th:field="*{threeCategoryId}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="supplierId">供應商ID</lable>
+                <input type="text" name="supplierId" id="supplierId" th:field="*{supplierId}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="averageCostId">商品平均加權成本</lable>
+                <input type="text" name="averageCost" id="averageCostId" th:field="*{averageCost}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="publishStatusId">上架狀態</lable>
+                <input type="text" name="publishStatus" id="publishStatusId" th:field="*{publishStatus}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="auditStatusId">審核狀態</lable>
+                <input type="text" name="auditStatus" id="auditStatusId" th:field="*{auditStatus}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="weightId">商品重量</lable>
+                <input type="text" name="weight" id="weightId" th:field="*{weight}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="lengthId">商品長度</lable>
+                <input type="text" name="length" id="lengthId" th:field="*{length}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="heightId">商品高度</lable>
+                <input type="text" name="height" id="heightId" th:field="*{height}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="widthId">商品寬度</lable>
+                <input type="text" name="width" id="widthId" th:field="*{width}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="colorTypeId">顏色</lable>
+                <input type="text" name="colorType" id="colorTypeId" th:field="*{colorType}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="productionDateId">生產日期</lable>
+                <input type="text" name="productionDate" id="productionDateId" th:field="*{productionDate}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="shelfLifeId">商品有效期限</lable>
+                <input type="text" name="shelfLife" id="shelfLifeId" th:field="*{shelfLife}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="descriptionId">商品描述</lable>
                 <input type="text" name="description" id="descriptionId" th:field="*{description}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="indateId">商品登錄時間</lable>
+                <input type="text" name="indate" id="indateId" th:field="*{indate}" class="form-control">
+            </div>
+            <div class="form-group">
+                <lable for="modifiedTimeId">最後修改時間</lable>
+                <input type="text" name="modifiedTime" id="modifiedTimeId" th:field="*{modifiedTime}" class="form-control">
             </div>
             <div class="form-group">
                 <lable for="statusId">作者</lable>
