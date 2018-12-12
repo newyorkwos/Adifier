@@ -56,7 +56,9 @@ public class ProductInfoController {
      * @return
      */
     @GetMapping("/productInfo/input")
-    public String inputPage(){
+    public String inputPage(Model model)
+    {
+        model.addAttribute("productInfo", new ProductInfo());
         return "input";
     }
 

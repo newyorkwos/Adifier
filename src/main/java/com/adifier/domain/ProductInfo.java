@@ -1,6 +1,7 @@
 package com.adifier.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -80,9 +81,11 @@ public class ProductInfo {
     private String colorType;
 
     //生產日期
+    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     private Date productionDate;
 
     //商品有效期限
+    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     private Date shelfLife;
 
     //商品描述
@@ -90,10 +93,12 @@ public class ProductInfo {
     private String description;
 
     //商品登錄時間
+    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     @Column(nullable =false,length=1)
     private Date indate;
 
     //最後修改時間
+    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     private Date modifiedTime;
 
     public ProductInfo() {
