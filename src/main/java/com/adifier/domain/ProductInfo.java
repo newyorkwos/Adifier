@@ -81,25 +81,25 @@ public class ProductInfo {
     private String colorType;
 
     //生產日期
-    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-    private Date productionDate;
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private Date productionDate=new Date();
 
     //商品有效期限
-    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-    private Date shelfLife;
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private Date shelfLife=new Date();
 
     //商品描述
     @Column(nullable =false)
     private String description;
 
     //商品登錄時間
-    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
     @Column(nullable =false,length=1)
-    private Date indate;
+    private Date indate=new Date();
 
     //最後修改時間
-    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-    private Date modifiedTime;
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private Date modifiedTime=new Date();
 
     public ProductInfo() {
     }
