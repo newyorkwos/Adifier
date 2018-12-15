@@ -5,7 +5,7 @@ import com.adifier.service.ProductInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -85,7 +85,7 @@ public class ProductInfoApp {
         productInfo.setPublishStatus(publishStatus);
         productInfo.setAuditStatus(auditStatus);
         productInfo.setDescription(description);
-        productInfo.setIndate(new Date());
+        productInfo.setIndate(new Date(System.currentTimeMillis()));
 
         return productInfoService.save(productInfo);
     }

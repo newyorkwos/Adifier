@@ -3,13 +3,18 @@ package com.adifier.web;
 import com.adifier.domain.ProductInfo;
 import com.adifier.service.ProductInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Date;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -22,6 +27,13 @@ public class ProductInfoController {
 
     @Autowired
     private ProductInfoService productInfoService;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(true);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
 
     /**
      * Get all List of ProcuctInfos
@@ -70,8 +82,8 @@ public class ProductInfoController {
      */
     @PostMapping("/productInfo")
     public String post(ProductInfo productInfo){
-        productInfo.setIndate(new Date());
-        productInfo.setModifiedTime(new Date());
+        productInfo.setIndate(new Date(System.currentTimeMillis()));
+        productInfo.setModifiedTime(new Date(System.currentTimeMillis()));
         productInfoService.save(productInfo);
         return "redirect:/productInfos";
     }

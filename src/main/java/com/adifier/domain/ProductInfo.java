@@ -1,10 +1,9 @@
 package com.adifier.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * 描述:
@@ -57,11 +56,11 @@ public class ProductInfo {
     @Column(nullable =false)
     private Long averageCost;
 
-    //上架狀態：0下架 1上架
+    //上架狀態：0下架 1上架 2下架
     @Column(nullable =false,length=1)
     private int publishStatus;
 
-    //審核狀態 0未審核 1已審核
+    //審核狀態 0未審核 1已審核 2審核退件
     @Column(nullable =false,length=1)
     private int auditStatus;
 
@@ -81,25 +80,25 @@ public class ProductInfo {
     private String colorType;
 
     //生產日期
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Date productionDate=new Date();
+
+    private Date productionDate;
 
     //商品有效期限
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Date shelfLife=new Date();
+
+    private Date shelfLife;
 
     //商品描述
     @Column(nullable =false)
     private String description;
 
     //商品登錄時間
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
-    @Column(nullable =false,length=1)
-    private Date indate=new Date();
+
+    @Column(nullable =false)
+    private Date indate;
 
     //最後修改時間
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Date modifiedTime=new Date();
+
+    private Date modifiedTime;
 
     public ProductInfo() {
     }
@@ -245,6 +244,7 @@ public class ProductInfo {
     }
 
     public void setProductionDate(Date productionDate) {
+
         this.productionDate = productionDate;
     }
 
