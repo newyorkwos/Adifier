@@ -29,20 +29,20 @@
                 <input type="text" name="brandId" id="brandId" th:field="*{brandId}" class="form-control">
             </div>
             <div class="form-group">
-                <lable for="oneCategoryId">一級分類ID</lable>
-                <input type="text" name="oneCategoryId" id="oneCategoryId" th:field="*{oneCategoryId}" class="form-control">
+                <lable for="oneCategoryById">一級分類ID</lable>
+                <input type="text" name="oneCategoryId" id="oneCategoryById" th:value="*{oneCategoryId}" class="form-control">
             </div>
             <div class="form-group">
-                <lable for="twoCategoryId">二級分類ID</lable>
-                <input type="text" name="twoCategoryId" id="twoCategoryId" th:field="*{twoCategoryId}" class="form-control">
+                <lable for="twoCategoryById">二級分類ID</lable>
+                <input type="text" name="twoCategoryId" id="twoCategoryById" th:value="*{twoCategoryId}" class="form-control">
             </div>
             <div class="form-group">
-                <lable for="threeCategoryId">三級分類ID</lable>
-                <input type="text" name="threeCategoryId" id="threeCategoryId" th:field="*{threeCategoryId}" class="form-control">
+                <lable for="threeCategoryById">三級分類ID</lable>
+                <input type="text" name="threeCategoryId" id="threeCategoryById" th:value="*{threeCategoryId}" class="form-control">
             </div>
             <div class="form-group">
-                <lable for="supplierId">供應商ID</lable>
-                <input type="text" name="supplierId" id="supplierId" th:field="*{supplierId}" class="form-control">
+                <lable for="supplierById">供應商ID</lable>
+                <input type="text" name="supplierId" id="supplierById" th:value="*{supplierId}" class="form-control">
             </div>
             <div class="form-group">
                 <lable for="averageCostId">商品平均加權成本</lable>
@@ -53,7 +53,7 @@
                 <select name="publishStatus" id="publishStatusId" class="form-control">
                     <option value="0" th:selected="(*{publishStatus}== '0')">未上架</option>
                     <option value="1" th:selected="(*{publishStatus}== '1')">已上架</option>
-                    <option value="1" th:selected="(*{publishStatus}== '2')">已下架</option>
+                    <option value="2" th:selected="(*{publishStatus}== '2')">已下架</option>
                 </select>
             </div>
             <div class="form-group">
@@ -61,7 +61,7 @@
                 <select name="auditStatus" id="auditStatusId" class="form-control">
                     <option value="0" th:selected="(*{auditStatus}== '0')">未審核</option>
                     <option value="1" th:selected="(*{auditStatus}== '1')">審核通過</option>
-                    <option value="1" th:selected="(*{auditStatus}== '2')">審核不通過</option>
+                    <option value="2" th:selected="(*{auditStatus}== '2')">審核不通過</option>
                 </select>
             </div>
             <div class="form-group">

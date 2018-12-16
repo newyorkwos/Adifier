@@ -54,10 +54,10 @@
             <td th:text="${productInfo.barCode}">條碼</td>
             <td th:text="${productInfo.productCode}">商品編碼</td>
             <td th:text="${productInfo.brandId}">品牌ID</td>
-            <td th:switch="${productInfo.oneCategoryId}">一級分類ID</td>
-            <td th:switch="${productInfo.twoCategoryId}">二級分類ID</td>
-            <td th:switch="${productInfo.threeCategoryId}">三級分類ID</td>
-            <td th:switch="${productInfo.supplierId}">供應商ID</td>
+            <td th:text="${productInfo.oneCategoryId}">一級分類ID</td>
+            <td th:text="${productInfo.twoCategoryId}">二級分類ID</td>
+            <td th:text="${productInfo.threeCategoryId}">三級分類ID</td>
+            <td th:text="${productInfo.supplierId}">供應商ID</td>
             <td th:text="${productInfo.averageCost}">商品平均加權成本</td>
             <td th:switch="${productInfo.publishStatus}">
                 <span th:case="0">未上架</span>
