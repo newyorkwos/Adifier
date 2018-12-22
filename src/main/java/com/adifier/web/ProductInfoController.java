@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Date;
 import java.util.List;
@@ -76,10 +77,13 @@ public class ProductInfoController {
      * @return
      */
     @PostMapping("/productInfo")
-    public String post(ProductInfo productInfo){
+    public String post(ProductInfo productInfo, final RedirectAttributes attributes){
         productInfo.setIndate(new Date(System.currentTimeMillis()));
         productInfo.setModifiedTime(new Date(System.currentTimeMillis()));
-        productInfoService.save(productInfo);
+        ProductInfo productInfo1=productInfoService.save(productInfo);
+        if(productInfo1 !=null){
+            attributes.addFlashAttribute("message","<"+productInfo1.getProductName()+">儲存成功");
+        }
         return "redirect:/productInfos";
     }
 

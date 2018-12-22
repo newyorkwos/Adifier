@@ -11,6 +11,11 @@
 <div class="container" style="max-width: 1500px;">
 
     <h1>ProductInfo List</h1>
+    <div class="alert alert-success alert-dismissable fade in " th:unless="${#strings.isEmpty(message)}">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>恭喜！ </strong>
+        <span th:text="${message}">儲存成功</span>
+    </div>
     <p class="text-right"><a href="./input.html" th:href="@{/productInfo/input}" class="btn btn-primary">新增</a></p>
     <table class="table table-bordered table-striped">
         <thead>
