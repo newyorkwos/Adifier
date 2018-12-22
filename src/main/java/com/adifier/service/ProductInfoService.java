@@ -4,7 +4,6 @@ import com.adifier.domain.ProductInfo;
 import com.adifier.domain.ProductInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -31,11 +30,9 @@ public class ProductInfoService {
         return productInfoRepository.findAll();
     }
 
-    public Page<ProductInfo> findAllByPage(){
-        PageRequest pageRequest=new PageRequest.of(1,5);
+    public Page<ProductInfo> findAllByPage(Pageable pageable){
 
-        Pageable pageable=new of(1,5);
-        return productInfoRepository.findAllByPage();
+        return productInfoRepository.findAllByPage(pageable);
     }
 
     /**
