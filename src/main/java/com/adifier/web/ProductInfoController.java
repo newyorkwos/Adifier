@@ -90,11 +90,30 @@ public class ProductInfoController {
         return "redirect:/productInfos";
     }
 
+    /**
+     * add or edit product
+     * @param productId
+     * @param model
+     * @return
+     */
     @GetMapping("/productInfo/{productId}/input")
     public String inputEditPage(@PathVariable long productId, Model model){
 
         ProductInfo productInfo=productInfoService.getOne(productId);
         model.addAttribute("productInfo", productInfo);
         return "input";
+    }
+
+    /**
+     * delete product by productId
+     * @param productId
+     * @param attributes
+     * @return
+     */
+    @GetMapping("/productInfos/{productId}/delete")
+    public String delete(@PathVariable long productId, final RedirectAttributes attributes){
+        productInfoService.deleteById(productId);
+        attributes.addFlashAttribute("message","刪除成功");
+        return "redirect:/productInfos";
     }
 }

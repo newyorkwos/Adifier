@@ -87,8 +87,8 @@
             <td th:text="${productInfo.indate}">商品登錄時間</td>
             <td th:text="${productInfo.modifiedTime}">最後修改時間</td>
             <td>
-                <a href="#" th:href="@{/productInfo/{productId}/input(productId=${productInfo.productId})}">更新</a>&nbsp;
-                <a href="#" th:href="@{/productInfo/{productId}/delete(productId=${productInfo.productId})}">刪除</a>
+                <a href="#" th:href="@{/productInfo/{productId}/input(productId=${productInfo.productId})}">更新</a>
+                <a href="#" th:href="@{/productInfos/{productId}/delete(productId=${productInfo.productId})}">刪除</a>
             </td>
         </tr>
         </tbody>
