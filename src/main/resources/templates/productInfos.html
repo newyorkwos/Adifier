@@ -53,7 +53,7 @@
             size: 列表總數
             even/odd: 奇偶數
         -->
-        <tr th:each="productInfo, iterStat:${productInfos}" >
+        <tr th:each="productInfo, iterStat:${page.content}" >
             <td th:text="${iterStat.count}">1</td>
             <td ><a href="#" th:text="${productInfo.productName}" th:href="@{'/productInfo/'+${productInfo.productId}}">商品名稱</a></td>
             <td th:text="${productInfo.barCode}">條碼</td>
@@ -86,7 +86,6 @@
             <td th:text="${productInfo.description}">商品描述</td>
             <td th:text="${productInfo.indate}">商品登錄時間</td>
             <td th:text="${productInfo.modifiedTime}">最後修改時間</td>
-            </td>
             <td>
                 <a href="#" th:href="@{/productInfo/{productId}/input(productId=${productInfo.productId})}">更新</a>&nbsp;
                 <a href="#" th:href="@{/productInfo/{productId}/delete(productId=${productInfo.productId})}">刪除</a>
@@ -94,6 +93,12 @@
         </tr>
         </tbody>
     </table>
+    <nav>
+        <ul class="pager">
+            <li class="previous"><a href="#" th:href="@{'/productInfos?page='+${page.number-1}}" th:unless="${page.first}">上一頁</a></li>
+            <li class="next"><a href="#" th:href="@{/productInfos(page=${page.number}+1)}" th:unless="${page.last}">下一頁</a></li>
+        </ul>
+    </nav>
 <div>
 </div>
 </div>

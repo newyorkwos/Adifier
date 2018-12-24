@@ -30,9 +30,11 @@ public class ProductInfoService {
         return productInfoRepository.findAll();
     }
 
+
+
     public Page<ProductInfo> findAllByPage(Pageable pageable){
 
-        return productInfoRepository.findAllByPage(pageable);
+        return productInfoRepository.findAll(pageable);
     }
 
     /**

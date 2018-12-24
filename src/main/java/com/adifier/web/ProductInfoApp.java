@@ -3,10 +3,13 @@ package com.adifier.web;
 import com.adifier.domain.ProductInfo;
 import com.adifier.service.ProductInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
-import java.util.List;
 
 /**
  * 描述:
@@ -53,9 +56,9 @@ public class ProductInfoApp {
      * @return
      */
     @GetMapping("/productInfos")
-    public List<ProductInfo> getAll(){
+    public Page<ProductInfo> getAll(@PageableDefault(size=5, sort={"productId"}, direction = Sort.Direction.DESC) Pageable pageable){
 
-        return productInfoService.findAll();
+        return productInfoService.findAllByPage(pageable);
     }
     @PutMapping("/productInfos")
     public ProductInfo update(@RequestParam long productId,
