@@ -2,6 +2,7 @@ package com.adifier.web;
 
 import com.adifier.domain.User;
 import com.adifier.domain.UserRepository;
+import com.adifier.form.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class LoginController {
     private UserRepository userRepository;
 
     @GetMapping("/register")
-    public String register(){
+    public String registerPage(){
         return "register";
     }
 
@@ -28,10 +29,11 @@ public class LoginController {
     public String longPage(){
         return "login";
     }
-    @PostMapping("/register")
-    public String registerPost(User user){
-        userRepository.save(user);
 
+    @PostMapping("/register")
+    public String register(UserForm userForm){
+        User user=userForm.convertToUser();
+        userRepository.save(user);
         return "redirect:/login";
     }
 }
