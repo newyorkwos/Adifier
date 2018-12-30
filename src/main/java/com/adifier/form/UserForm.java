@@ -1,7 +1,12 @@
 package com.adifier.form;
 
 import com.adifier.domain.User;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.BeanUtils;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 /**
  * 描述:
@@ -12,10 +17,17 @@ import org.springframework.beans.BeanUtils;
  */
 public class UserForm {
 
+    public static final String PHONE_REG="^((09)+[\\d]{8})";
+    @NotBlank
     private String username;
+    @NotBlank
+    @Length(min=6, message="密碼至少需要6位")
     private String password;
-    private int phone;
+    @Pattern(regexp = PHONE_REG, message = "請輸入正確的手機號")
+    private String phone;
+    @Email
     private String email;
+    @NotBlank
     private String confirmPassword;
 
     public UserForm() {
@@ -37,11 +49,11 @@ public class UserForm {
         this.password = password;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -61,6 +73,12 @@ public class UserForm {
         this.confirmPassword = confirmPassword;
     }
 
+    public boolean confirmPassword(){
+        if(this.password.equals(this.confirmPassword)){
+            return true;
+        }
+        return false;
+    }
     public User convertToUser(){
         User user=new UserFormConvert().convert(this);
         return user;
