@@ -52,7 +52,10 @@ public class ProductInfoService {
      * @return
      */
     public ProductInfo getOne(long productId){
-        return productInfoRepository.findById(productId).orElse(null);
+        ProductInfo productInfo=productInfoRepository.getOne(productId);
+
+        return productInfo;
+        //return productInfoRepository.findById(productId).orElse(null);
     }
 
     /**

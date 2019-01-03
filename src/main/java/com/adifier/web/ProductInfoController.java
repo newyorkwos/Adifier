@@ -1,7 +1,10 @@
 package com.adifier.web;
 
 import com.adifier.domain.ProductInfo;
+import com.adifier.exception.ProductInfoNotFoundException;
 import com.adifier.service.ProductInfoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Date;
@@ -23,6 +27,8 @@ import java.sql.Date;
  **/
 @Controller
 public class ProductInfoController {
+
+    private final Logger logger= LoggerFactory.getLogger(ProductInfoController.class);
 
     @Autowired
     private ProductInfoService productInfoService;
@@ -55,9 +61,7 @@ public class ProductInfoController {
     @GetMapping("/productInfo/{productId}")
     public String detail(@PathVariable long productId , Model model){
         ProductInfo productInfo=productInfoService.getOne(productId);
-        if(productInfo==null){
-            productInfo=new ProductInfo();
-        }
+
         model.addAttribute("productInfo",productInfo);
         return "productInfo";
     }
@@ -116,4 +120,6 @@ public class ProductInfoController {
         attributes.addFlashAttribute("message","刪除成功");
         return "redirect:/productInfos";
     }
+
+
 }
