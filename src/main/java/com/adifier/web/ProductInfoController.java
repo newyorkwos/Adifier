@@ -55,9 +55,11 @@ public class ProductInfoController {
      * @return
      */
     @GetMapping("/productInfo/{productId}")
-    public String detail(@PathVariable long productId , Model model){
+    public String detail(@PathVariable long productId , Model model) {
         ProductInfo productInfo=productInfoService.getOne(productId);
-
+        if(productInfo==null){
+            throw new RuntimeException("找不到該筆資料");
+        }
         model.addAttribute("productInfo",productInfo);
         return "productInfo";
     }
@@ -117,5 +119,8 @@ public class ProductInfoController {
         return "redirect:/productInfos";
     }
 
-
+    @GetMapping("/exception")
+    public String testException() {
+        throw new RuntimeException("測試異常");
+    }
 }
