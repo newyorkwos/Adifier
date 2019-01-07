@@ -1,6 +1,7 @@
 package com.adifier.web;
 
 import com.adifier.domain.ProductInfo;
+import com.adifier.exception.ProductInfoNotFoundException;
 import com.adifier.service.ProductInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -58,7 +59,8 @@ public class ProductInfoController {
     public String detail(@PathVariable long productId , Model model) {
         ProductInfo productInfo=productInfoService.getOne(productId);
         if(productInfo==null){
-            throw new RuntimeException("找不到該筆資料");
+            //throw new RuntimeException("找不到該筆資料");
+            throw new ProductInfoNotFoundException("找不到該筆資料");
         }
         model.addAttribute("productInfo",productInfo);
         return "productInfo";
