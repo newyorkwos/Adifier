@@ -2,7 +2,7 @@ package com.adifier.web;
 
 import com.adifier.domain.ProductInfo;
 import com.adifier.exception.ProductInfoNotFoundException;
-import com.adifier.service.ProductInfoService;
+import com.adifier.service.ProductInfoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +28,7 @@ public class ProductInfoController {
 
 
     @Autowired
-    private ProductInfoService productInfoService;
+    private ProductInfoServiceImpl productInfoServiceImpl;
 
     //@InitBinder
     //public void initBinder(WebDataBinder binder) {
@@ -44,7 +44,7 @@ public class ProductInfoController {
      */
     @GetMapping("/productInfos")
     public String list(@PageableDefault(size=5, sort={"productId"}, direction = Sort.Direction.DESC) Pageable pageable, Model model){
-        Page<ProductInfo> page1=productInfoService.findAllByPage(pageable);
+        Page<ProductInfo> page1= productInfoServiceImpl.findAllByPage(pageable);
         model.addAttribute("page",page1);
         return "productInfos";
     }
@@ -57,7 +57,7 @@ public class ProductInfoController {
      */
     @GetMapping("/productInfo/{productId}")
     public String detail(@PathVariable long productId , Model model) {
-        ProductInfo productInfo=productInfoService.getOne(productId);
+        ProductInfo productInfo= productInfoServiceImpl.getOne(productId);
         if(productInfo==null){
             //throw new RuntimeException("找不到該筆資料");
             throw new ProductInfoNotFoundException("找不到該筆資料");
@@ -87,7 +87,7 @@ public class ProductInfoController {
     public String post(ProductInfo productInfo, final RedirectAttributes attributes){
         productInfo.setIndate(new Date(System.currentTimeMillis()));
         productInfo.setModifiedTime(new Date(System.currentTimeMillis()));
-        ProductInfo productInfo1=productInfoService.save(productInfo);
+        ProductInfo productInfo1= productInfoServiceImpl.save(productInfo);
         if(productInfo1 !=null){
             attributes.addFlashAttribute("message","**"+productInfo1.getProductName()+"**儲存成功");
         }
@@ -103,7 +103,7 @@ public class ProductInfoController {
     @GetMapping("/productInfo/{productId}/input")
     public String inputEditPage(@PathVariable long productId, Model model){
 
-        ProductInfo productInfo=productInfoService.getOne(productId);
+        ProductInfo productInfo= productInfoServiceImpl.getOne(productId);
         model.addAttribute("productInfo", productInfo);
         return "input";
     }
@@ -116,7 +116,7 @@ public class ProductInfoController {
      */
     @GetMapping("/productInfos/{productId}/delete")
     public String delete(@PathVariable long productId, final RedirectAttributes attributes){
-        productInfoService.deleteById(productId);
+        productInfoServiceImpl.deleteById(productId);
         attributes.addFlashAttribute("message","刪除成功");
         return "redirect:/productInfos";
     }
