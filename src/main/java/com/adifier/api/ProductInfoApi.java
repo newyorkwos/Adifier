@@ -1,15 +1,19 @@
-package com.adifier.web;
+package com.adifier.api;
 
 import com.adifier.domain.ProductInfo;
 import com.adifier.service.ProductInfoService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  * 描述:
@@ -20,7 +24,7 @@ import java.sql.Date;
  */
 @RestController
 @RequestMapping("/api/v1")
-public class ProductInfoApp {
+public class ProductInfoApi {
 
     @Autowired
     private ProductInfoService productInfoService;
@@ -103,5 +107,73 @@ public class ProductInfoApp {
          productInfoService.deleteById(productId);
     }
 
+    /**
+     * get all productInfos
+     * @return
+     */
+    @GetMapping("/products")
+    public ResponseEntity<?> listAllProducts(){
+        List<ProductInfo> productInfos=productInfoService.findAll();
+        return new ResponseEntity<List<ProductInfo>>(productInfos, HttpStatus.OK);
+    }
+
+    /**
+     * get One productInfo by Id
+     * @param productInfoId
+     * @return
+     */
+    @GetMapping("products/{productInfoId}")
+    public ResponseEntity<?> getProductInfo(@PathVariable Long productInfoId){
+        ProductInfo productInfo=productInfoService.getOne(productInfoId);
+        return new ResponseEntity<Object>(productInfo, HttpStatus.OK);
+    }
+
+    /**
+     * save a productInfo
+     * @param productInfo
+     * @return
+     */
+    @PostMapping("/products")
+    public ResponseEntity<?> saveProductInfo(@RequestBody ProductInfo productInfo){
+        ProductInfo productInfo1=productInfoService.save(productInfo);
+        return new ResponseEntity<Object>(productInfo1, HttpStatus.CREATED);
+    }
+
+    /**
+     * update productInfo
+     * @param productInfoId
+     * @param productInfo
+     * @return
+     */
+    @PutMapping("/products/{productInfoId}")
+    public ResponseEntity<?> updateProductInfo(@PathVariable Long productInfoId, ProductInfo productInfo){
+        ProductInfo currentProductInfo=productInfoService.getOne(productInfoId);
+        BeanUtils.copyProperties(productInfo, currentProductInfo);
+        ProductInfo productInfo1=productInfoService.update(currentProductInfo);
+        return new ResponseEntity<Object>(productInfo1, HttpStatus.OK);
+    }
+
+
+
+    /**
+     * delete productInfo
+     * @param productInfoId
+     * @return
+     */
+    @DeleteMapping("/products/{productInfoId}")
+    public ResponseEntity<?> deleteProductInfo(@PathVariable Long productInfoId){
+        productInfoService.deleteById(productInfoId);
+        return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
+    }
+
+    /**
+     * delete all ProductInfo
+     * @return
+     */
+    @DeleteMapping("/products")
+    public ResponseEntity<?> deleteAllProductInfo(){
+        productInfoService.deleteAll();
+        return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
+    }
 }
 
