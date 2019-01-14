@@ -1,6 +1,7 @@
 package com.adifier.api;
 
 import com.adifier.domain.ProductInfo;
+import com.adifier.dto.ProductInfoDTO;
 import com.adifier.service.ProductInfoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -142,16 +143,17 @@ public class ProductInfoApi {
     /**
      * update productInfo
      * @param productInfoId
-     * @param productInfo
+     * @param productInfoDTO
      * @return
      */
     @PutMapping("/products/{productInfoId}")
-    public ResponseEntity<?> updateProductInfo(@PathVariable Long productInfoId, ProductInfo productInfo){
+    public ResponseEntity<?> updateProductInfo(@PathVariable Long productInfoId, ProductInfoDTO productInfoDTO){
         ProductInfo currentProductInfo=productInfoService.getOne(productInfoId);
-        BeanUtils.copyProperties(productInfo, currentProductInfo);
+        BeanUtils.copyProperties(productInfoDTO, currentProductInfo);
         ProductInfo productInfo1=productInfoService.update(currentProductInfo);
         return new ResponseEntity<Object>(productInfo1, HttpStatus.OK);
     }
+
 
 
 

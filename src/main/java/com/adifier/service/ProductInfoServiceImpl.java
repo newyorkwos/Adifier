@@ -78,7 +78,7 @@ public class ProductInfoServiceImpl implements ProductInfoService{
 
     @Override
     public void deleteAll() {
-
+        productInfoRepository.deleteAll();
     }
 
 }
