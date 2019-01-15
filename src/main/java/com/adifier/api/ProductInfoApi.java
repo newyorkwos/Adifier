@@ -147,9 +147,9 @@ public class ProductInfoApi {
      * @return
      */
     @PutMapping("/products/{productInfoId}")
-    public ResponseEntity<?> updateProductInfo(@PathVariable Long productInfoId, ProductInfoDTO productInfoDTO){
+    public ResponseEntity<?> updateProductInfo(@PathVariable Long productInfoId, @RequestBody ProductInfoDTO productInfoDTO){
         ProductInfo currentProductInfo=productInfoService.getOne(productInfoId);
-        BeanUtils.copyProperties(productInfoDTO, currentProductInfo);
+        productInfoDTO.convertToProductInfo(currentProductInfo);
         ProductInfo productInfo1=productInfoService.update(currentProductInfo);
         return new ResponseEntity<Object>(productInfo1, HttpStatus.OK);
     }

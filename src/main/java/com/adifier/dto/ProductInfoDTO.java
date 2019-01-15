@@ -1,5 +1,10 @@
 package com.adifier.dto;
 
+import com.adifier.domain.ProductInfo;
+import com.adifier.util.CustomBeanUtils;
+import org.springframework.beans.BeanUtils;
+import org.springframework.validation.beanvalidation.CustomValidatorBean;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -207,5 +212,27 @@ public class ProductInfoDTO {
 
     public void setModifiedTime(Date modifiedTime) {
         this.modifiedTime = modifiedTime;
+    }
+
+    /**
+     * 轉換傳輸對象
+     * @param productInfo
+     */
+    public void convertToProductInfo(ProductInfo productInfo){
+        new ProductInfoConvert().convert(this, productInfo);
+    }
+
+    private class ProductInfoConvert implements Convert<ProductInfoDTO, ProductInfo>{
+        @Override
+        public ProductInfo convert(ProductInfoDTO productInfoDTO, ProductInfo productInfo) {
+            String[] nullPropertyNames= CustomBeanUtils.getNullpropertyNames(productInfoDTO);
+            BeanUtils.copyProperties(productInfoDTO, productInfo, nullPropertyNames);
+            return productInfo;
+        }
+
+        @Override
+        public ProductInfo convert(ProductInfoDTO productInfoDTO) {
+            return null;
+        }
     }
 }
