@@ -219,7 +219,12 @@ public class ProductInfoDTO {
      * @param productInfo
      */
     public void convertToProductInfo(ProductInfo productInfo){
+
         new ProductInfoConvert().convert(this, productInfo);
+    }
+
+    public ProductInfo convertToProductInfo(){
+        return new ProductInfoConvert().convert(this);
     }
 
     private class ProductInfoConvert implements Convert<ProductInfoDTO, ProductInfo>{
@@ -232,7 +237,12 @@ public class ProductInfoDTO {
 
         @Override
         public ProductInfo convert(ProductInfoDTO productInfoDTO) {
-            return null;
+            ProductInfo productInfo=new ProductInfo();
+            BeanUtils.copyProperties(productInfoDTO, productInfo);
+            return productInfo;
         }
+
+
+
     }
 }

@@ -2,17 +2,23 @@ package com.adifier.api;
 
 import com.adifier.domain.ProductInfo;
 import com.adifier.dto.ProductInfoDTO;
+import com.adifier.exception.InvalidRequestException;
+import com.adifier.exception.ProductInfoNotFoundException;
 import com.adifier.service.ProductInfoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.Date;
 import java.util.List;
 
@@ -115,6 +121,9 @@ public class ProductInfoApi {
     @GetMapping("/products")
     public ResponseEntity<?> listAllProducts(){
         List<ProductInfo> productInfos=productInfoService.findAll();
+        if(productInfos.isEmpty()){
+            throw new ProductInfoNotFoundException("Products Not found");
+        }
         return new ResponseEntity<List<ProductInfo>>(productInfos, HttpStatus.OK);
     }
 
@@ -126,6 +135,9 @@ public class ProductInfoApi {
     @GetMapping("products/{productInfoId}")
     public ResponseEntity<?> getProductInfo(@PathVariable Long productInfoId){
         ProductInfo productInfo=productInfoService.getOne(productInfoId);
+        if(productInfo==null){
+            throw new ProductInfoNotFoundException(String.format("productInfo ID %3 not found", productInfoId));
+        }
         return new ResponseEntity<Object>(productInfo, HttpStatus.OK);
     }
 
@@ -135,8 +147,11 @@ public class ProductInfoApi {
      * @return
      */
     @PostMapping("/products")
-    public ResponseEntity<?> saveProductInfo(@RequestBody ProductInfo productInfo){
+    public ResponseEntity<?> saveProductInfo(@Valid @RequestBody ProductInfo productInfo, BindingResult bindResult){
         ProductInfo productInfo1=productInfoService.save(productInfo);
+        if(bindResult.hasErrors()){
+            throw new InvalidRequestException("Invalid parameters", bindResult);
+        }
         return new ResponseEntity<Object>(productInfo1, HttpStatus.CREATED);
     }
 
