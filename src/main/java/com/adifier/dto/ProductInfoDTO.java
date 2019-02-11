@@ -3,12 +3,7 @@ package com.adifier.dto;
 import com.adifier.domain.ProductInfo;
 import com.adifier.util.CustomBeanUtils;
 import org.springframework.beans.BeanUtils;
-import org.springframework.validation.beanvalidation.CustomValidatorBean;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.sql.Date;
 
 /**
@@ -21,6 +16,7 @@ public class ProductInfoDTO {
 
 
     private String productCode;
+    @NotBlank
     private String productName;
     private String barCode ;
     private Long brandId;
