@@ -5,7 +5,10 @@ import com.adifier.dto.ProductInfoDTO;
 import com.adifier.exception.InvalidRequestException;
 import com.adifier.exception.ProductInfoNotFoundException;
 import com.adifier.service.ProductInfoService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -133,7 +136,7 @@ public class ProductInfoApi {
     public ResponseEntity<?> getProductInfo(@PathVariable Long productInfoId){
         ProductInfo productInfo=productInfoService.getOne(productInfoId);
         if(productInfo==null){
-            throw new ProductInfoNotFoundException(String.format("productInfo ID %s not found", productInfoId));
+            throw new ProductInfoNotFoundException(String.format("productInfo ID %3 not found", productInfoId));
         }
         return new ResponseEntity<Object>(productInfo, HttpStatus.OK);
     }
@@ -145,11 +148,10 @@ public class ProductInfoApi {
      */
     @PostMapping("/products")
     public ResponseEntity<?> saveProductInfo(@Valid @RequestBody ProductInfo productInfo, BindingResult bindResult){
-
+        ProductInfo productInfo1=productInfoService.save(productInfo);
         if(bindResult.hasErrors()){
             throw new InvalidRequestException("Invalid parameters", bindResult);
         }
-        ProductInfo productInfo1=productInfoService.save(productInfo);
         return new ResponseEntity<Object>(productInfo1, HttpStatus.CREATED);
     }
 
@@ -160,14 +162,8 @@ public class ProductInfoApi {
      * @return
      */
     @PutMapping("/products/{productInfoId}")
-    public ResponseEntity<?> updateProductInfo(@PathVariable Long productInfoId, @Valid @RequestBody ProductInfoDTO productInfoDTO, BindingResult bindingResult){
+    public ResponseEntity<?> updateProductInfo(@PathVariable Long productInfoId, @RequestBody ProductInfoDTO productInfoDTO){
         ProductInfo currentProductInfo=productInfoService.getOne(productInfoId);
-        if(currentProductInfo==null){
-            throw new ProductInfoNotFoundException(String.format("productInfo by id % not found", productInfoId));
-        }
-        if(bindingResult.hasErrors()){
-            throw new InvalidRequestException("Invalid parameter", bindingResult);
-        }
         productInfoDTO.convertToProductInfo(currentProductInfo);
         ProductInfo productInfo1=productInfoService.update(currentProductInfo);
         return new ResponseEntity<Object>(productInfo1, HttpStatus.OK);
