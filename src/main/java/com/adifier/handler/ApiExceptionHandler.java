@@ -1,6 +1,7 @@
 package com.adifier.handler;
 
 import com.adifier.exception.InvalidRequestException;
+import com.adifier.exception.NotFoundException;
 import com.adifier.exception.ProductInfoNotFoundException;
 import com.adifier.resource.ErrorResource;
 import com.adifier.resource.FieldResource;
@@ -31,7 +32,7 @@ public class ApiExceptionHandler {
      * @param e
      * @return
      */
-    @ExceptionHandler(ProductInfoNotFoundException.class)
+    @ExceptionHandler(NotFoundException.class)
     @ResponseBody
     public ResponseEntity<?> handleNotFound(RuntimeException e){
         ErrorResource errorResource=new ErrorResource(e.getMessage());

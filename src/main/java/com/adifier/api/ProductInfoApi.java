@@ -3,6 +3,7 @@ package com.adifier.api;
 import com.adifier.domain.ProductInfo;
 import com.adifier.dto.ProductInfoDTO;
 import com.adifier.exception.InvalidRequestException;
+import com.adifier.exception.NotFoundException;
 import com.adifier.exception.ProductInfoNotFoundException;
 import com.adifier.service.ProductInfoService;
 
@@ -123,7 +124,7 @@ public class ProductInfoApi {
     public ResponseEntity<?> listAllProducts(){
         List<ProductInfo> productInfos=productInfoService.findAll();
         if(productInfos.isEmpty()){
-            throw new ProductInfoNotFoundException("Products Not found");
+            throw new NotFoundException("Products Not found");
         }
         return new ResponseEntity<List<ProductInfo>>(productInfos, HttpStatus.OK);
     }
@@ -137,7 +138,7 @@ public class ProductInfoApi {
     public ResponseEntity<?> getProductInfo(@PathVariable Long productInfoId){
         ProductInfo productInfo=productInfoService.getOne(productInfoId);
         if(productInfo==null){
-            throw new ProductInfoNotFoundException(String.format("productInfo ID %s not found", productInfoId));
+            throw new NotFoundException(String.format("productInfo ID %s not found", productInfoId));
         }
         return new ResponseEntity<Object>(productInfo, HttpStatus.OK);
     }
@@ -167,7 +168,7 @@ public class ProductInfoApi {
     public ResponseEntity<?> updateProductInfo(@PathVariable Long productInfoId, @Valid @RequestBody ProductInfoDTO productInfoDTO, BindingResult bindingResult){
         ProductInfo currentProductInfo=productInfoService.getOne(productInfoId);
         if(currentProductInfo==null){
-            throw new ProductInfoNotFoundException(String.format("productInfo ID %s not found", productInfoId));
+            throw new NotFoundException(String.format("productInfo ID %s not found", productInfoId));
         }
         if(bindingResult.hasErrors()){
             throw new InvalidRequestException("Invalid parameter",bindingResult);
