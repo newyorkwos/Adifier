@@ -167,6 +167,7 @@ public class ProductInfoApi {
     @PutMapping("/products/{productInfoId}")
     public ResponseEntity<?> updateProductInfo(@PathVariable Long productInfoId, @Valid @RequestBody ProductInfoDTO productInfoDTO, BindingResult bindingResult){
         ProductInfo currentProductInfo=productInfoService.getOne(productInfoId);
+
         if(currentProductInfo==null){
             throw new NotFoundException(String.format("productInfo ID %s not found", productInfoId));
         }
