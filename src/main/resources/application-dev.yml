@@ -6,3 +6,4 @@ logging:
     com.adifier: debug
   file: devlog/mylog
   pattern:
+    config: classpath: adifier-test.xml
