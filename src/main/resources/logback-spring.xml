@@ -2,7 +2,7 @@
 <configuration >
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
     <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}"/>
-    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
     <!--输出到文件 设置-->
     <appender name="TIME_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
@@ -11,18 +11,16 @@
         <file>${LOG_FILE}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--定义日志切分方式，把每一天的日志归档一个文件中-->
-            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i</fileNamePattern>
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}</fileNamePattern>
             <!--保留最近30天的日志-->
             <maxHistory>30</maxHistory>
             <!--指定日志文件的上限大小,设置为200M的话，那么到了这个值，就会删除旧的日志。-->
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
+            <totalSizeCap>200MB</totalSizeCap>
         </rollingPolicy>
       </appender>
 
     <!--指定基础的日志输出级别-->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="TIME_FILE" />
     </root>
