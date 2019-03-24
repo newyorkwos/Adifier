@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<configuration  scan="true" scanPeriod="60 seconds" debug="false">
-
-
+<configuration >
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
     <!--输出到文件 设置-->
     <appender name="TIME_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
@@ -14,9 +15,9 @@
             <!--保留最近30天的日志-->
             <maxHistory>30</maxHistory>
             <!--指定日志文件的上限大小,设置为200M的话，那么到了这个值，就会删除旧的日志。-->
-            <timeBaseFileNamingAndTriggerPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>100MB</maxFileSize>
-            </timeBaseFileNamingAndTriggerPolicy>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
       </appender>
 
