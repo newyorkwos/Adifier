@@ -4,13 +4,10 @@ import com.adifier.domain.ProductInfo;
 import com.adifier.dto.ProductInfoDTO;
 import com.adifier.exception.InvalidRequestException;
 import com.adifier.exception.NotFoundException;
-import com.adifier.exception.ProductInfoNotFoundException;
 import com.adifier.service.ProductInfoService;
-
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -34,6 +31,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 public class ProductInfoApi {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private ProductInfoService productInfoService;
