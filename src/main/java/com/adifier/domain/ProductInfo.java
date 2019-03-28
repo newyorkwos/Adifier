@@ -279,4 +279,32 @@ public class ProductInfo {
     public void setModifiedTime(Date modifiedTime) {
         this.modifiedTime = modifiedTime;
     }
+
+    @Override
+    public String toString() {
+        return "ProductInfo{" +
+                "productId=" + productId +
+                ", productCode='" + productCode + '\'' +
+                ", productName='" + productName + '\'' +
+                ", barCode='" + barCode + '\'' +
+                ", brandId=" + brandId +
+                ", oneCategoryId=" + oneCategoryId +
+                ", twoCategoryId=" + twoCategoryId +
+                ", threeCategoryId=" + threeCategoryId +
+                ", supplierId=" + supplierId +
+                ", averageCost=" + averageCost +
+                ", publishStatus=" + publishStatus +
+                ", auditStatus=" + auditStatus +
+                ", weight=" + weight +
+                ", length=" + length +
+                ", height=" + height +
+                ", width=" + width +
+                ", colorType='" + colorType + '\'' +
+                ", productionDate=" + productionDate +
+                ", shelfLife=" + shelfLife +
+                ", description='" + description + '\'' +
+                ", indate=" + indate +
+                ", modifiedTime=" + modifiedTime +
+                '}';
+    }
 }

@@ -51,6 +51,7 @@ public class ProductInfoApi {
     public ProductInfo getOne(@PathVariable long productId){
 
         return productInfoService.getOne(productId);
+
     }
 
     /**

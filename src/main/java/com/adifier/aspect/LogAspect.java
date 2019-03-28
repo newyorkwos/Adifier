@@ -25,7 +25,7 @@ public class LogAspect {
 
     private final Logger logger= LoggerFactory.getLogger(this.getClass());
 
-    @Pointcut("execution(* com.adifier.api.*.*(..))")
+    @Pointcut("execution(* com.adifier.*.*.*(..))")
     public void log(){
 
     }
@@ -50,6 +50,7 @@ public class LogAspect {
     }
     @AfterReturning(returning="result" , pointcut="log()")
     public void doAfterReturning(Object result){
+
         logger.info("Return ---------- {}", result);
     }
 
