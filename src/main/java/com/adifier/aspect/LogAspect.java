@@ -1,15 +1,16 @@
 package com.adifier.aspect;
 
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Date;
 
 
 /**
@@ -30,24 +31,40 @@ public class LogAspect {
 
     }
 
-    @Before("log()")
-    public void deBefore(JoinPoint joinPoint){
-        ServletRequestAttributes attributes=(ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request=attributes.getRequest();
-        String classMethod=joinPoint.getSignature().getDeclaringTypeName()+ "." +joinPoint.getSignature().getName();
-        RequestLog requestLog=new RequestLog(
-                request.getRequestURL().toString(),
-                request.getRemoteAddr(),
-                classMethod,
-                joinPoint.getArgs()
-        );
-        logger.info("Request-----{}", requestLog);
+//    @Before("log()")
+//    public void doBefore(JoinPoint joinPoint) {
+//
+//        ServletRequestAttributes attributes=(ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+//        HttpServletRequest request=attributes.getRequest();
+//        String classMethod=joinPoint.getSignature().getDeclaringTypeName()+ "." +joinPoint.getSignature().getName();
+//        RequestLog requestLog=new RequestLog(
+//                request.getRequestURL().toString(),
+//                request.getRemoteAddr(),
+//                classMethod,
+//                joinPoint.getArgs()
+//        );
+//
+//        logger.info("Request-----{}", requestLog);
+//    }
+
+    @Around("log()")
+    public Object handleControllerMethod(ProceedingJoinPoint pjp) throws Throwable {
+        System.out.println("Time aspect start");
+        Object[] args=pjp.getArgs();
+        for (Object arg: args){
+            System.out.println("arg is "+arg);
+        }
+        long start=new Date().getTime();
+        Object object=pjp.proceed();
+        System.out.println("time aspect take times: "+(new Date().getTime()-start) );
+        System.out.println("Time aspect end");
+        return object;
     }
 
-    @After("log()")
-    public void doAfter(){
-        //logger.info("---------- doAfter 2 ----------");
-    }
+//    @After("log()")
+//    public void doAfter(){
+//        //logger.info("---------- doAfter 2 ----------");
+//    }
     @AfterReturning(returning="result" , pointcut="log()")
     public void doAfterReturning(Object result){
 
