@@ -52,17 +52,16 @@ public class LogAspect {
 
     @Around("log()")
     public Object handleControllerMethod(ProceedingJoinPoint pjp) throws Throwable {
-        System.out.println("Time aspect start");
+        //System.out.println("Time aspect start");
 
         Object[] args=pjp.getArgs();
-        for (Object arg: args){
-            System.out.println("arg is "+arg);
+        for(int i=0; i<args.length;i++){
+            logger.info("arg[{}] ---------- {}",i, args[i]);
         }
+
         long start=new Date().getTime();
         Object object=pjp.proceed();
-
-        System.out.println("time aspect take times: "+(new Date().getTime()-start) );
-        System.out.println("Time aspect end");
+        logger.info("Time aspect take times ---------- {}",(new Date().getTime()-start));
         return object;
     }
 
@@ -76,27 +75,27 @@ public class LogAspect {
         logger.info("Return ---------- {}", result);
     }
 
-    private class RequestLog{
-        private String url;
-        private String ip;
-        private String classMethod;
-        private Object[] args;
-
-        public RequestLog(String url, String ip, String classMethod, Object[] args) {
-            this.url = url;
-            this.ip = ip;
-            this.classMethod = classMethod;
-            this.args = args;
-        }
-
-        @Override
-        public String toString() {
-            return "RequestLog{" +
-                    "url='" + url + '\'' +
-                    ", ip='" + ip + '\'' +
-                    ", classMethod='" + classMethod + '\'' +
-                    ", args=" + Arrays.toString(args) +
-                    '}';
-        }
-    }
+//    private class RequestLog{
+//        private String url;
+//        private String ip;
+//        private String classMethod;
+//        private Object[] args;
+//
+//        public RequestLog(String url, String ip, String classMethod, Object[] args) {
+//            this.url = url;
+//            this.ip = ip;
+//            this.classMethod = classMethod;
+//            this.args = args;
+//        }
+//
+//        @Override
+//        public String toString() {
+//            return "RequestLog{" +
+//                    "url='" + url + '\'' +
+//                    ", ip='" + ip + '\'' +
+//                    ", classMethod='" + classMethod + '\'' +
+//                    ", args=" + Arrays.toString(args) +
+//                    '}';
+//        }
+//    }
 }
