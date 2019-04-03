@@ -17,14 +17,14 @@ public class Order {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    public Order() {}
+    private Date createDateTime;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updateDate;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date cancelDate;
+    private Date updateDateTime;
+
+    private Date cancelDateTime;
+
+
+    public Order() {}
 
     public Long getId() {
         return id;
@@ -34,37 +34,27 @@ public class Order {
         this.id = id;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreateDateTime() {
+        return createDateTime;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateDateTime(Date createDateTime) {
+        this.createDateTime = createDateTime;
     }
 
-    public Date getUpdateDate() {
-        return updateDate;
+    public Date getUpdateDateTime() {
+        return updateDateTime;
     }
 
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+    public void setUpdateDateTime(Date updateDateTime) {
+        this.updateDateTime = updateDateTime;
     }
 
-    public Date getCancelDate() {
-        return cancelDate;
+    public Date getCancelDateTime() {
+        return cancelDateTime;
     }
 
-    public void setCancelDate(Date cancelDate) {
-        this.cancelDate = cancelDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", createDate=" + createDate +
-                ", updateDate=" + updateDate +
-                ", cancelDate=" + cancelDate +
-                '}';
+    public void setCancelDateTime(Date cancelDateTime) {
+        this.cancelDateTime = cancelDateTime;
     }
 }
