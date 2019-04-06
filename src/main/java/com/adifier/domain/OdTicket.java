@@ -22,7 +22,16 @@ public class OdTicket {
     private Date dateUpdate;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCancel;
+    @ManyToOne
+    private User user;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public OdTicket() {}
 

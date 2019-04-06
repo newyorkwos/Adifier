@@ -2,10 +2,8 @@ package com.adifier.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * 描述:
@@ -24,6 +22,15 @@ public class User {
     private String password;
     private String phone;
     private String email;
+    private List<OdTicket> odTickets;
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    public List<OdTicket> getOdTickets() {
+        return odTickets;
+    }
+
+    public void setOdTickets(List<OdTicket> odTickets) {
+        this.odTickets = odTickets;
+    }
 
     public Long getId() {
         return id;
