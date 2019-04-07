@@ -3,6 +3,7 @@ package com.adifier.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,8 +23,13 @@ public class User {
     private String password;
     private String phone;
     private String email;
-    private List<OdTicket> odTickets;
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    private List<OdTicket> odTickets=new ArrayList<>();//讓OdTicket id在新增時，可以與User table產生關聯
+    public void addOdTicket(OdTicket odTicket){
+        odTicket.setUser(this);
+        odTickets.add(odTicket);
+    }
+
     public List<OdTicket> getOdTickets() {
         return odTickets;
     }
@@ -78,8 +84,9 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", odTickets=" + odTickets +
                 '}';
     }
 }
