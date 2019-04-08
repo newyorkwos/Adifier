@@ -30,6 +30,9 @@ public class User {
         odTickets.add(odTicket);
     }
 
+    public User() {
+    }
+
     public List<OdTicket> getOdTickets() {
         return odTickets;
     }
