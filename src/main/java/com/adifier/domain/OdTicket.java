@@ -25,6 +25,11 @@ public class OdTicket {
     @ManyToOne
     private User user;
 
+    //For Repository delete relation between OdTicket and User Table
+    public void clearOdTicket(){
+        this.getUser().getOdTickets().remove(this);
+    }
+
     public User getUser() {
         return user;
     }
