@@ -5,10 +5,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * @description: create OdTicket Ticket
+ * @author: StevenWu
+ * @create: 2019-04-03 15:02
+ **/
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class OdTicket {
-
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
@@ -18,10 +22,18 @@ public class OdTicket {
     private Date dateUpdate;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCancel;
+    @ManyToOne
+    private User user;
 
-
-    public OdTicket() {
+    public User getUser() {
+        return user;
     }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public OdTicket() {}
 
     public Long getId() {
         return id;
