@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class OdTicketServiceImpl implements OdTicketService {
@@ -26,4 +27,16 @@ public class OdTicketServiceImpl implements OdTicketService {
         odTicket.clearOdTicket();
         odTicketRepository.deleteById(id);
     }
+    @Transactional
+    @Override
+    public OdTicket updateOdTicket(OdTicket odTicket) {
+        return odTicketRepository.save(odTicket);
+    }
+
+    @Override
+    public List<OdTicket> findOdTickets(Long id) {
+        return odTicketRepository.findAll();
+    }
+
+
 }
