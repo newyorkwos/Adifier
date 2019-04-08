@@ -39,8 +39,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User getLastOne() {
-
-        return null;
+    public User findByUsernameAndPassword(String username, String password) {
+        return userRepository.findByUsernameAndPassword(username, password);
     }
 }

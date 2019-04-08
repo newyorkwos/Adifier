@@ -7,6 +7,5 @@ public interface UserService {
     User updateUser(User user);
     User getOne(Long id);
     void deleteUser(Long id);
-
-    User getLastOne();
+    User findByUsernameAndPassword(String username, String password);
 }
