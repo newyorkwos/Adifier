@@ -52,3 +52,7 @@
     padding-top: 5em !important;
     padding-bottom: 5em !important;
 }
+/*---------display---------*/
+.m-inline-block{
+    display: inline-block !important;
+}
