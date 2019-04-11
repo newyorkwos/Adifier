@@ -1,3 +1,18 @@
+/*------margin-------*/
+.m-margin-tb-tiny{
+    margin-top: 0.3em !important;
+    margin-bottom: 0.3em !important;
+}
+.m-margin-top-small{
+    margin-top: 0.5em !important;
+}
+.m-margin-top{
+    margin-top: 1em !important;
+}
+.m-margin-top-large{
+    margin-top: 2em !important;
+}
+/*------opacity-------*/
 .m-padded-tb-mini{
     padding-top: 0.2em !important;
     padding-bottom: 0.2em !important;
@@ -8,6 +23,11 @@
     padding-bottom: 5em !important;
 }
 /*-------text---------*/
+m-text{
+    font-weight:300 !important;
+    letter-spacing: 1px !important;
+    line-height: 1.8;
+}
 .m-text-thin{
     font-weight: 300 !important;
 }
@@ -55,4 +75,14 @@
 /*---------display---------*/
 .m-inline-block{
     display: inline-block !important;
+}
+/*---------container---------*/
+.m-container{
+    max-width: 72em !important;
+    margin: auto !important;
+}
+
+/*---------color---------*/
+.m-black{
+    color: #333 !important;
 }
