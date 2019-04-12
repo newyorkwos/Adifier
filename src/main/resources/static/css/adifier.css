@@ -13,15 +13,13 @@
     margin-top: 2em !important;
 }
 /*------opacity-------*/
-.m-padded-tb-mini{
-    padding-top: 0.2em !important;
-    padding-bottom: 0.2em !important;
+.m-opacity-mini{
+    opacity: 0.8 !important;
+}
+.m-opacity-tiny{
+    opacity: 0.6 !important;
 }
 
-.m-padded-tb-massive{
-    padding-top: 5em !important;
-    padding-bottom: 5em !important;
-}
 /*-------text---------*/
 m-text{
     font-weight:300 !important;
@@ -81,6 +79,10 @@ m-text{
     max-width: 72em !important;
     margin: auto !important;
 }
+.m-container-small{
+    max-width: 60em !important;
+    margin: auto !important;
+}
 
 /*---------color---------*/
 .m-black{
@@ -105,5 +107,9 @@ m-text{
     .m-mobile-show {
         display: block !important;
     }
+}
+
+body{
+    background: url("../images/bg.png");
 }
 
