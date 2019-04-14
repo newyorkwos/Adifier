@@ -71,8 +71,23 @@
                 </div>
                 <!--按讚-->
                 <div class="ui center aligned basic segment">
-                    <button class="ui orange basic circular button">按讚</button>
+                    <button id="payButton" class="ui orange basic circular button">按讚</button>
                 </div>
+                <div class="ui payQR flowing popup transition hidden">
+                    <div class="ui orange basic label">
+                        <div class="ui images" style="font-size: inherit !important;">
+                            <div class="image">
+                                <img src="../static/images/myQRcode.PNG" alt="" class="ui rounded bordered image" style="width: 120px">
+                                <div>Line QRCode</div>
+                            </div>
+                            <div class="image">
+                                <img src="../static/images/myQRcode.PNG" alt="" class="ui rounded bordered image" style="width: 120px">
+                                <div>Line QRCode</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
             <div class="ui attached positive message">
@@ -127,6 +142,12 @@
 <script>
     $('.menu.toggle').click(function(){
         $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('#payButton').popup({
+        popup: $('.payQR.popup'),
+        on: 'click',
+        position: 'bottom center'
     });
 </script>
 </body>
