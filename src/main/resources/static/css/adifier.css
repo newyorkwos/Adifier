@@ -119,6 +119,10 @@ m-text{
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
+    .m-mobile-lr-clear{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
     .m-mobile-wide{
         width: 100% !important;
     }
