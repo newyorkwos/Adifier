@@ -35,25 +35,39 @@
 <!--中間內容-->
 <div class="m-container-small m-padded-tb-big">
     <div class="ui container">
-        <div class="ui grid">
+        <div class="ui stackable grid">
             <div class="eleven wide column">
-                <img src="https://picsum.photos/800/600?image=1001" alt="" class="ui rounded image">
+                <div class="ui segment">
+                    <img src="https://picsum.photos/800/600?image=1001" alt="" class="ui rounded image">
+                </div>
             </div>
             <div class="five wide column">
                 <div class="ui top attached segment">
                     <div class="ui header">關於我</div>
                 </div>
                 <div class="ui attached segment">
-
+                    <p class="m-text">StevenWu 在葡萄牙Faro參加原廠媒體活動期間</p>
+                    <p class="m-text">在BMW原廠的規劃中，車型數字「7」、「8」歸為陣營中的「Luxury Segment」，中文直譯就是指「豪華級距」，但其實BMW本身就屬於豪華品牌，我們姑且稱之為「超豪華系列」，除了7系列與8系列之外，也涵蓋了i8與X7。</p>
                 </div>
                 <div class="ui attached segment">
-
+                    <div class="ui orange left pointing basic label m-margin-tb-tiny">程式</div>
+                    <div class="ui orange left pointing basic label m-margin-tb-tiny">旅遊</div>
+                    <div class="ui orange left pointing basic label m-margin-tb-tiny">助人</div>
+                    <div class="ui orange left pointing basic label m-margin-tb-tiny">生活</div>
                 </div>
                 <div class="ui attached segment">
-
+                    <div class="ui teal left pointing basic label m-margin-tb-tiny">java</div>
+                    <div class="ui teal left pointing basic label m-margin-tb-tiny">html</div>
+                    <div class="ui teal left pointing basic label m-margin-tb-tiny">springBoot</div>
+                    <div class="ui teal left pointing basic label m-margin-tb-tiny">goodLife</div>
                 </div>
                 <div class="ui attached segment">
-
+                    <a href="#" class="ui circular icon button"><i class="github icon"></i></a>
+                    <a href="#" class="ui LineQR circular icon button"><i class="facebook icon"></i></a>
+                    <a href="#" class="ui qq circular icon button" data-content="12345678" data-position="bottom center"><i class="qq icon"></i></a>
+                </div>
+                <div class="ui Line-QR flowing popup transition hidden">
+                    <img src="../static/images/myQRcode.PNG" alt="" class="ui rounded image" style="width: 110px">
                 </div>
             </div>
         </div>
@@ -103,6 +117,12 @@
 <script>
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
+    });
+    $('.qq').popup();
+
+    $('.LineQR').popup({
+      popup :$('.Line-QR'),
+      position: 'bottom center'
     });
 </script>
 </body>
