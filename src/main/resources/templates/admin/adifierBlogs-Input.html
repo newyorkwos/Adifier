@@ -65,6 +65,37 @@
                 <div class="field">
                     <textarea placeholder="博客內容" name="content" ></textarea>
                 </div>
+                <div class="two fields">
+                    <div class="field">
+                        <div class="ui left labeled action input">
+                            <label class="ui compact teal basic label">分類</label>
+                            <div class="ui fluid selection dropdown">
+                                <input type="hidden" name="type">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">分類</div>
+                                <div class="menu">
+                                    <div class="item" data-value="1">錯誤日誌</div>
+                                    <div class="item" data-value="2">開發手冊</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left labeled action input">
+                            <label class="ui compact teal basic label">標籤</label>
+                            <div class="ui fluid  selection multiple search  dropdown">
+                                <input type="hidden" name="tag">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">分類</div>
+                                <div class="menu">
+                                    <div class="item" data-value="1">java</div>
+                                    <div class="item" data-value="2">javaScript</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </form>
         </div>
     </div>
