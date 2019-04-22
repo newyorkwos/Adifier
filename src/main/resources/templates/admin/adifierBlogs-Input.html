@@ -37,8 +37,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" class="item">發布</a>
-            <a href="#" class="teal active item">列表</a>
+            <a href="#" class="teal active item">發布</a>
+            <a href="#" class="item">列表</a>
         </div>
     </div>
 </div>
@@ -46,70 +46,26 @@
     <!--中間內容-->
     <div class="m-container-small m-padded-tb-big">
         <div class="ui container">
-            <form action="#" method="post" class="ui segment form">
-                <div class="inline fields">
-                    <div class="field">
-                        <input type="text" name="title" placeholder="標題">
-                    </div>
-                    <div class="field">
-                        <div class="ui selection dropdown">
-                            <input type="hidden" name="type">
+            <form action="#" method="post" class="ui form">
+                <div class="field">
+                    <div class="ui left labeled input">
+                        <div class="ui selection compact teal basic dropdown label">
+                            <input type="hidden" value="原創">
                             <i class="dropdown icon"></i>
-                            <div class="default text">分類</div>
+                            <div class="default text">原創</div>
                             <div class="menu">
-                                <div class="item" data-value="1">錯誤日誌</div>
-                                <div class="item" data-value="2">開發者手冊</div>
+                                <div class="item" data-value="原創">原創</div>
+                                <div class="item" data-value="轉載">轉載</div>
+                                <div class="item" data-value="翻譯">翻譯</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" id="recommend" name="recommend">
-                            <label for="recommend">推薦</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <button class="ui mini teal basic button"><i class="search icon"></i>搜索</button>
+                        <input type="text" name="title" placeholder="標題">
                     </div>
                 </div>
+                <div class="field">
+                    <textarea placeholder="博客內容" name="content" ></textarea>
+                </div>
             </form>
-
-            <table class="ui table">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>標題</th>
-                    <th>類型</th>
-                    <th>推薦</th>
-                    <th>更新時間</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>刻意練習清單</td>
-                    <td>知識升級</td>
-                    <td>是</td>
-                    <td>2019-10-04 09:45</td>
-                    <td>
-                        <a href="#" class="ui mini teal basic button">編輯</a>
-                        <a href="#" class="ui mini red basic button">刪除</a>
-                    </td>
-                </tr>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th colspan="6">
-                        <div class="ui mini pagination menu">
-                            <a href="#" class="item">上一頁</a>
-                            <a href="#" class="item">下一頁</a>
-                        </div>
-                        <a href="#" class="ui mini right floated teal basic button">新增</a>
-                    </th>
-                </tr>
-                </tfoot>
-            </table>
         </div>
     </div>
 
