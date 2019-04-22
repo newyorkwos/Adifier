@@ -47,7 +47,7 @@
     <div class="m-container-small m-padded-tb-big">
         <div class="ui container">
             <form action="#" method="post" class="ui form">
-                <div class="field">
+                <div class="required field">
                     <div class="ui left labeled input">
                         <div class="ui selection compact teal basic dropdown label">
                             <input type="hidden" value="原創">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="field">
-                    <textarea placeholder="博客內容" name="content" ></textarea>
+                    <textarea placeholder="博客內容" name="content"></textarea>
                 </div>
                 <div class="two fields">
                     <div class="field">
@@ -95,7 +95,39 @@
                         </div>
                     </div>
                 </div>
+                <div class="field">
+                    <div class="ui left labeled input">
+                        <label class="ui teal basic label">首圖</label>
+                        <input type="text" name="indexPicture" placeholder="首圖引用地址">
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="recommend" name="recommend" checked class="hidden">
+                            <label for="recommend">推薦</label>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="shareInfo" name="shareInfo" class="hidden">
+                            <label for="shareInfo">轉載聲明</label>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="appreciation" name="appreciation" class="hidden">
+                            <label for="appreciation">讚賞</label>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="commend" name="commend" class="hidden">
+                            <label for="commend">評論</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui error message"></div>
 
+                <div class="ui right aligned container">
+                    <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                    <button class="ui secondary button">保存</button>
+                    <button class="ui teal button">發布</button>
+                </div>
             </form>
         </div>
     </div>
@@ -148,7 +180,15 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
-
+    $('.ui.form').form({
+        fields: {
+            identifier: 'title',
+            rules: [{
+                type: 'empty',
+                prompt: '標題： 請輸入博客標題'
+            }]
+        }
+    });
 </script>
 </body>
 
